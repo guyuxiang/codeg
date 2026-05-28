@@ -1,0 +1,99 @@
+rules: []
+projects:
+  data-platform:
+    description: 数据平台
+    rules: []
+    versions:
+      v2:
+        description: v2 版本
+        services:
+        - name: data-pipeline
+          url: git@gitlab.com:data/pipeline.git
+          branch: release/v2
+          description: 数据采集、ETL清洗、入仓
+        - name: data-api
+          url: git@gitlab.com:data/api.git
+          branch: release/v2
+          description: 数据查询API，对外提供数据服务
+        - name: data-warehouse
+          url: git@gitlab.com:data/warehouse.git
+          branch: release/v2
+          description: 数据仓库，SQL任务调度
+        - name: data-dashboard
+          url: git@gitlab.com:data/dashboard.git
+          branch: release/v2
+          description: 数据可视化看板
+  eco-platform:
+    description: 电商平台
+    rules: []
+    versions:
+      main:
+        description: 生产环境
+        services:
+        - name: user-service
+          url: git@gitlab.com:eco/backend/user-service.git
+          branch: main
+          description: 用户CRUD、认证鉴权、权限管理
+        - name: order-service
+          url: git@gitlab.com:eco/backend/order-service.git
+          branch: main
+          description: 订单生命周期、状态流转、库存扣减
+        - name: payment-service
+          url: git@gitlab.com:eco/backend/payment-service.git
+          branch: main
+          description: 支付处理、退款、账单对账
+        - name: notification-service
+          url: git@gitlab.com:eco/backend/notification-service.git
+          branch: main
+          description: 短信、邮件、站内信、App推送
+        - name: gateway
+          url: git@gitlab.com:eco/backend/gateway.git
+          branch: main
+          description: API网关、限流、鉴权路由
+        - name: contracts
+          url: git@gitlab.com:eco/shared/contracts.git
+          branch: main
+          description: Proto定义，所有服务间通信的接口协议
+        - name: admin-portal
+          url: git@gitlab.com:eco/frontend/admin-portal.git
+          branch: main
+          description: 后台管理界面，管理员审批、数据看板
+        - name: user-app
+          url: git@gitlab.com:eco/frontend/user-app.git
+          branch: main
+          description: C端用户前端，商品浏览、下单、支付
+      develop:
+        description: 开发环境
+        services:
+        - name: user-service
+          url: git@gitlab.com:eco/backend/user-service.git
+          branch: develop
+          description: 用户CRUD、认证鉴权、权限管理
+        - name: order-service
+          url: git@gitlab.com:eco/backend/order-service.git
+          branch: develop
+          description: 订单生命周期、状态流转、库存扣减
+        - name: payment-service
+          url: git@gitlab.com:eco/backend/payment-service.git
+          branch: develop
+          description: 支付处理、退款、账单对账
+        - name: notification-service
+          url: git@gitlab.com:eco/backend/notification-service.git
+          branch: develop
+          description: 短信、邮件、站内信、App推送
+        - name: gateway
+          url: git@gitlab.com:eco/backend/gateway.git
+          branch: develop
+          description: API网关、限流、鉴权路由
+        - name: contracts
+          url: git@gitlab.com:eco/shared/contracts.git
+          branch: develop
+          description: Proto定义，所有服务间通信的接口协议
+        - name: admin-portal
+          url: git@gitlab.com:eco/frontend/admin-portal.git
+          branch: develop
+          description: 后台管理界面
+        - name: user-app
+          url: git@gitlab.com:eco/frontend/user-app.git
+          branch: develop
+          description: C端用户前端

@@ -49,8 +49,37 @@
       "web_service": "Web 服务",
       "model_providers": "模型供应商",
       "experts": "专家",
-      "quick_messages": "快捷消息"
+      "quick_messages": "快捷消息",
+      "projects": "项目管理",
+      "services": "服务管理"
     }
+  },
+  "ProjectsSettings": {
+    "title": "项目管理",
+    "description": "管理工作区项目、版本和服务。与 MCP 共享同一配置文件。",
+    "globalRules": "全局规则",
+    "addProject": "添加项目",
+    "noProjects": "还没有项目，点击右上角添加",
+    "versions": "版本",
+    "addVersion": "添加版本",
+    "services": "服务",
+    "addService": "添加服务",
+    "project": "项目",
+    "projectName": "项目名称",
+    "projectDesc": "项目描述",
+    "projectRules": "项目规则",
+    "version": "版本",
+    "versionName": "版本名称",
+    "versionDesc": "版本描述",
+    "service": "服务",
+    "serviceName": "服务名称",
+    "serviceDesc": "服务描述",
+    "serviceTech": "技术栈",
+    "gitUrl": "GitLab 地址",
+    "branch": "分支",
+    "rulesHelp": "全局规则（所有项目通用）",
+    "rulesPlaceholder": "金额用 int64（分），不用 float\n配置走环境变量，不硬编码\n...",
+    "save": "保存"
   },
   "AppearanceSettings": {
     "sectionTitle": "主题外观",
@@ -2048,6 +2077,7 @@
   "ProjectBoot": {
     "title": "项目启动器",
     "tabs": {
+      "workspace": "工作区初始化",
       "shadcn": "shadcn"
     },
     "config": {

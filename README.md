@@ -355,6 +355,42 @@ Next.js 16 (Static Export) + React 19
 
 - Thanks to the [LinuxDO](https://linux.do) community for their support
 
+## Workspace Management
+
+Multi-project, multi-version workspace management with integrated GitLab support and MCP-based AI agent orchestration.
+
+### Features
+
+- **Project Hierarchy**: Organize services into projects and versions (e.g., `ecom-platform/main`, `ecom-platform/develop`)
+- **Service Registry**: Pre-register services with Git URLs for reuse across projects
+- **Project Boot**: Initialize workspace by cloning bare repos for all services in one click
+- **Branch Dropdown**: Auto-query remote branches via `git ls-remote` when adding services
+- **MCP Server** (`/mcp`): AI agent integration via stdio MCP protocol
+  - `init_session`: Auto-detect project/version from workspace directory, sync bare repos, create isolated git worktrees
+  - `commit_session`: Batch commit and push all service changes
+  - `cleanup_session`: Clean up worktrees and feature branches
+  - `save_service`: Update project/service config from AI conversations
+
+### Quick Start
+
+```bash
+# Start with Docker
+docker compose up -d
+
+# Or build locally
+pnpm build
+cd src-tauri && cargo build --release --bin codeg-server --no-default-features
+cd mcp && go build -o workspace-mcp .
+```
+
+### MCP Configuration
+
+In Codeg Settings → MCP, add:
+
+```json
+{"type": "stdio", "command": "/usr/local/bin/workspace-mcp", "args": []}
+```
+
 ## Acknowledgments
 
 - [ACP](https://agentclientprotocol.com) — the Agent Client Protocol (ACP) is the foundation that enables Codeg to connect with multiple agents

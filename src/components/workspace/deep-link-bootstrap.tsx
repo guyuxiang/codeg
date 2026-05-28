@@ -11,7 +11,7 @@ import type { AgentType } from "@/lib/types"
  * Runs once after both folders and tabs have hydrated.
  */
 export function DeepLinkBootstrap() {
-  const { foldersHydrated, folders, addFolderToWorkspaceById, conversations } =
+  const { foldersHydrated, folders, addFolderToWorkspaceById, conversations, openFolder } =
     useAppWorkspace()
   const { tabsHydrated, openTab } = useTabContext()
   const ranRef = useRef(false)
@@ -22,6 +22,16 @@ export function DeepLinkBootstrap() {
     ranRef.current = true
 
     if (typeof window === "undefined") return
+
+    // Auto-open from project-boot workspace init
+    const autoOpenPath = sessionStorage.getItem("workspace_auto_open")
+    if (autoOpenPath) {
+      sessionStorage.removeItem("workspace_auto_open")
+      openFolder(autoOpenPath).catch((err) => {
+        console.error("[DeepLinkBootstrap] auto-open failed:", err)
+      })
+      return
+    }
 
     const params = new URLSearchParams(window.location.search)
     const rawFolderId = params.get("folderId")
@@ -82,6 +92,7 @@ export function DeepLinkBootstrap() {
     folders,
     conversations,
     addFolderToWorkspaceById,
+    openFolder,
     openTab,
   ])
 

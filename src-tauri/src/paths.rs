@@ -43,6 +43,12 @@ pub fn codeg_pets_root() -> PathBuf {
         .unwrap_or_else(|| PathBuf::from(CODEG_DIR_NAME).join(PETS_DIR_NAME))
 }
 
+/// Path to the projects YAML file managed by the workspace MCP.
+/// Defaults to `~/.codeg/projects.yaml`.
+pub fn codeg_projects_path() -> PathBuf {
+    codeg_home_dir().join("projects.yaml")
+}
+
 /// Root directory for attachments uploaded from the web client.
 ///
 /// Resolution order matches `codeg_pets_root()`:

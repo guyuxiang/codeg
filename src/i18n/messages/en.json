@@ -49,8 +49,37 @@
       "web_service": "Web Service",
       "model_providers": "Model Providers",
       "experts": "Experts",
-      "quick_messages": "Quick Messages"
+      "quick_messages": "Quick Messages",
+      "projects": "Projects",
+      "services": "Services"
     }
+  },
+  "ProjectsSettings": {
+    "title": "Projects",
+    "description": "Manage workspace projects, versions, and services. Shared with MCP configuration.",
+    "globalRules": "Global Rules",
+    "addProject": "Add Project",
+    "noProjects": "No projects yet. Click Add Project to start.",
+    "versions": "Versions",
+    "addVersion": "Add Version",
+    "services": "Services",
+    "addService": "Add Service",
+    "project": "Project",
+    "projectName": "Project Name",
+    "projectDesc": "Description",
+    "projectRules": "Project Rules",
+    "version": "Version",
+    "versionName": "Version Name",
+    "versionDesc": "Description",
+    "service": "Service",
+    "serviceName": "Service Name",
+    "serviceDesc": "Description",
+    "serviceTech": "Stack",
+    "gitUrl": "Git URL",
+    "branch": "Branch",
+    "rulesHelp": "Global Rules (shared across all projects)",
+    "rulesPlaceholder": "Amounts in int64 (cents), never float\nConfig via env vars, never hardcoded\n...",
+    "save": "Save"
   },
   "AppearanceSettings": {
     "sectionTitle": "Theme Appearance",
@@ -2048,6 +2077,7 @@
   "ProjectBoot": {
     "title": "Project Boot",
     "tabs": {
+      "workspace": "Workspace Init",
       "shadcn": "shadcn"
     },
     "config": {

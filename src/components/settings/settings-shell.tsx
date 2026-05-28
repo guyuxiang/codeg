@@ -10,11 +10,13 @@ import {
 import {
   Bot,
   BookOpenText,
+  FolderGit2,
   GitBranch,
   Globe,
   Keyboard,
   Menu,
   MessageSquareText,
+  Package,
   SendHorizontal,
   Palette,
   PlugZap,
@@ -47,6 +49,8 @@ interface SettingsNavItem {
     | "quick_messages"
     | "shortcuts"
     | "version_control"
+    | "services"
+    | "projects"
     | "chat_channels"
     | "system"
     | "web_service"
@@ -68,6 +72,16 @@ const SETTINGS_NAV_ITEMS: SettingsNavItem[] = [
     href: "/settings/mcp",
     labelKey: "mcp",
     icon: PlugZap,
+  },
+  {
+    href: "/settings/services",
+    labelKey: "services",
+    icon: Package,
+  },
+  {
+    href: "/settings/projects",
+    labelKey: "projects",
+    icon: FolderGit2,
   },
   {
     href: "/settings/skills",

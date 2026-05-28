@@ -763,6 +763,38 @@ pub fn build_router(
             "/quick_messages_reorder",
             post(handlers::quick_messages::quick_messages_reorder),
         )
+        // ─── Projects ───
+        .route("/projects_list", post(handlers::projects::projects_list))
+        .route("/projects_save", post(handlers::projects::projects_save))
+        .route("/projects_delete", post(handlers::projects::projects_delete))
+        .route("/versions_save", post(handlers::projects::versions_save))
+        .route("/versions_delete", post(handlers::projects::versions_delete))
+        .route("/services_save", post(handlers::projects::services_save))
+        .route("/services_delete", post(handlers::projects::services_delete))
+        .route(
+            "/global_rules_save",
+            post(handlers::projects::global_rules_save),
+        )
+        .route(
+            "/workspace_init",
+            post(handlers::projects::workspace_init),
+        )
+        .route(
+            "/service_registry_list",
+            post(handlers::projects::service_registry_list),
+        )
+        .route(
+            "/service_registry_save",
+            post(handlers::projects::service_registry_save),
+        )
+        .route(
+            "/service_registry_delete",
+            post(handlers::projects::service_registry_delete),
+        )
+        .route(
+            "/git_remote_branches",
+            post(handlers::projects::git_remote_branches),
+        )
         // ─── Pet ───
         .route("/pet_list", post(handlers::pet::pet_list))
         .route("/pet_get", post(handlers::pet::pet_get))

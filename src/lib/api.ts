@@ -1412,6 +1412,145 @@ export async function quickMessagesReorder(ids: number[]): Promise<void> {
   return getTransport().call("quick_messages_reorder", { ids })
 }
 
+// ── Service Registry ──
+
+export interface ServiceRegistryEntry {
+  name: string
+  url: string
+  description: string
+}
+
+export async function serviceRegistryList(): Promise<ServiceRegistryEntry[]> {
+  return getTransport().call("service_registry_list")
+}
+
+export async function serviceRegistrySave(params: {
+  name: string
+  url: string
+  description: string
+}): Promise<ServiceRegistryEntry[]> {
+  return getTransport().call("service_registry_save", params)
+}
+
+export async function serviceRegistryDelete(params: {
+  name: string
+}): Promise<ServiceRegistryEntry[]> {
+  return getTransport().call("service_registry_delete", params)
+}
+
+export async function gitRemoteBranches(url: string): Promise<string[]> {
+  const result: any = await getTransport().call("git_remote_branches", { url })
+  return result?.branches ?? []
+}
+
+// ── Projects (workspace management) ──
+
+export interface ServiceInfo {
+  name: string
+  url: string
+  branch: string
+  description: string
+}
+
+export interface VersionInfo {
+  description: string
+  services: ServiceInfo[]
+}
+
+export interface ProjectInfo {
+  description: string
+  rules?: string[]
+  versions?: Record<string, VersionInfo>
+}
+
+export interface ProjectsConfig {
+  rules?: string[]
+  projects?: Record<string, ProjectInfo>
+}
+
+export async function projectsList(): Promise<ProjectsConfig> {
+  return getTransport().call("projects_list")
+}
+
+export async function projectsSave(params: {
+  name: string
+  description: string
+  rules: string[]
+}): Promise<ProjectsConfig> {
+  return getTransport().call("projects_save", params)
+}
+
+export async function projectsDelete(params: {
+  name: string
+}): Promise<ProjectsConfig> {
+  return getTransport().call("projects_delete", params)
+}
+
+export async function versionsSave(params: {
+  project: string
+  name: string
+  description: string
+}): Promise<ProjectsConfig> {
+  return getTransport().call("versions_save", params)
+}
+
+export async function versionsDelete(params: {
+  project: string
+  name: string
+}): Promise<ProjectsConfig> {
+  return getTransport().call("versions_delete", params)
+}
+
+export async function servicesSave(params: {
+  project: string
+  version: string
+  name: string
+  url: string
+  branch: string
+  description: string
+}): Promise<ProjectsConfig> {
+  return getTransport().call("services_save", params)
+}
+
+export async function servicesDelete(params: {
+  project: string
+  version: string
+  name: string
+}): Promise<ProjectsConfig> {
+  return getTransport().call("services_delete", params)
+}
+
+export async function globalRulesSave(params: {
+  rules: string[]
+}): Promise<ProjectsConfig> {
+  return getTransport().call("global_rules_save", params)
+}
+
+export interface InitServiceResult {
+  service: string
+  status: string
+}
+
+export interface WorkspaceInitResult {
+  sessionId: string
+  workspaceDir: string
+  cloned: number
+  updated: number
+  failed: number
+  total: number
+  services: InitServiceResult[]
+}
+
+export async function workspaceInit(params: {
+  project: string
+  version: string
+  feature?: string
+  targetDir?: string
+  sessionId?: string
+}): Promise<WorkspaceInitResult> {
+  return getTransport().call("workspace_init", params)
+}
+
 // Directory browser (for web/server mode)
 
 export async function getHomeDirectory(): Promise<string> {

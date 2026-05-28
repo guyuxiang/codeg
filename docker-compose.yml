@@ -1,19 +1,23 @@
 services:
   codeg:
     build: .
-    # Or use a pre-built image:
-    # image: xintaofei/codeg:latest
     ports:
       - "3080:3080"
     volumes:
       - codeg-data:/data
-      # Mount your project directories (optional):
-      # - /path/to/projects:/projects
+      - workspace-data:/workspace
+      # Git credentials for MCP clone
+      - ~/.ssh:/root/.ssh:ro
+      - ~/.gitconfig:/root/.gitconfig:ro
     environment:
       - CODEG_TOKEN=${CODEG_TOKEN:-}
       - CODEG_PORT=3080
       - CODEG_HOST=0.0.0.0
+      - CODEG_HOME=/data
+      - CODEG_DATA_DIR=/data
+      - WORKSPACE_DATA=/workspace
     restart: unless-stopped
 
 volumes:
   codeg-data:
+  workspace-data:
