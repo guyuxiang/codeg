@@ -1,6 +1,6 @@
 services:
   codeg:
-    build: .
+    image: ghcr.io/guyuxiang/codeg:latest
     ports:
       - "3080:3080"
     volumes:
