@@ -3,6 +3,7 @@ FROM node:22-alpine AS frontend
 RUN corepack enable
 WORKDIR /app
 COPY package.json pnpm-lock.yaml ./
+ENV CI=true
 RUN pnpm install --no-frozen-lockfile
 COPY src/ ./src/
 COPY public/ ./public/
