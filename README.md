@@ -8,15 +8,7 @@
 
 <p>
   <strong>English</strong> |
-  <a href="./docs/readme/README.zh-CN.md">简体中文</a> |
-  <a href="./docs/readme/README.zh-TW.md">繁體中文</a> |
-  <a href="./docs/readme/README.ja.md">日本語</a> |
-  <a href="./docs/readme/README.ko.md">한국어</a> |
-  <a href="./docs/readme/README.es.md">Español</a> |
-  <a href="./docs/readme/README.de.md">Deutsch</a> |
-  <a href="./docs/readme/README.fr.md">Français</a> |
-  <a href="./docs/readme/README.pt.md">Português</a> |
-  <a href="./docs/readme/README.ar.md">العربية</a>
+  <a href="./docs/readme/README.zh-CN.md">简体中文</a>
 </p>
 
 Codeg (Code Generation) is a multi-agent coding workspace. It brings multiple agents (Claude Code, Codex CLI, OpenCode, Gemini CLI, OpenClaw, Cline, etc.) into one workspace, supporting conversation aggregation and multi-agent collaboration, with desktop installation plus server/Docker deployment.
