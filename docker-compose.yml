@@ -6,9 +6,7 @@ services:
     volumes:
       - codeg-data:/data
       - workspace-data:/workspace
-      # Git credentials for MCP clone
       - ~/.ssh:/root/.ssh:ro
-      - ~/.gitconfig:/root/.gitconfig:ro
     environment:
       - CODEG_TOKEN=Aa123456@
       - CODEG_PORT=3080
@@ -16,6 +14,13 @@ services:
       - CODEG_HOME=/data
       - CODEG_DATA_DIR=/data
       - WORKSPACE_DATA=/workspace
+      - GIT_SSH_COMMAND=ssh -o StrictHostKeyChecking=no
+    # Rewrite HTTPS to SSH for private GitLab
+    command: >
+      sh -c "
+        git config --global url.'git@git.hrlyit.com:'.insteadOf 'https://git.hrlyit.com/'
+        exec codeg-server
+      "
     restart: unless-stopped
 
 volumes:
