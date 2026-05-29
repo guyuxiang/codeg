@@ -10,7 +10,7 @@ services:
       - ~/.ssh:/root/.ssh:ro
       - ~/.gitconfig:/root/.gitconfig:ro
     environment:
-      - CODEG_TOKEN=${CODEG_TOKEN:-}
+      - CODEG_TOKEN=Aa123456@
       - CODEG_PORT=3080
       - CODEG_HOST=0.0.0.0
       - CODEG_HOME=/data
